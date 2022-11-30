@@ -26,10 +26,9 @@ public class MainActivity extends AppCompatActivity {
     // création des variables
     private Button BT_Scan;
     public static Context context;
-    public  static Double latitude;
+    public static Double latitude;
     public static Double longitude;
     public static String nomBenne;
-
 
 
     @Override
@@ -40,9 +39,6 @@ public class MainActivity extends AppCompatActivity {
         // Initialisation
         BT_Scan = findViewById(R.id.boutonScan);
         context = getApplicationContext();
-
-
-
 
         /**
          * Vérifie si le bouton est cliqué
@@ -79,25 +75,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Initialise le résultat
         IntentResult intentResult = IntentIntegrator.parseActivityResult(
-                requestCode,resultCode,data
+                requestCode, resultCode, data
         );
         // check les conditions
-        if (intentResult.getContents() != null){
+        if (intentResult.getContents() != null) {
 
             String text = intentResult.getContents();
             // Sépare les éléments scannés dans le QRcode
             String[] value = text.split(";");
 
-            if (value.length != 3){
-                Toast.makeText(getApplicationContext(),"oups, ton QRCode n'est pas valide", Toast.LENGTH_SHORT).show();
-            }else {
+            if (value.length != 3) {
+                Toast.makeText(getApplicationContext(), "oups, ton QRCode n'est pas valide", Toast.LENGTH_SHORT).show();
+            } else {
 
                 latitude = Double.parseDouble(value[0]);
                 longitude = Double.parseDouble(value[1]);
@@ -106,17 +101,15 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-            Intent sms = new Intent(MainActivity.this,smsActivity.class);
+            Intent sms = new Intent(MainActivity.this, smsActivity.class);
             MainActivity.this.startActivity(sms);
-
 
 
         } else {
             // quand le résultat est nul
-            Toast.makeText(getApplicationContext(),"OUPS.. Tu n'as rien scanné", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "OUPS.. Tu n'as rien scanné", Toast.LENGTH_SHORT).show();
         }
     }
-
 
 
 }

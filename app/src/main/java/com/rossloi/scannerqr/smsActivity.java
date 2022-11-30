@@ -35,14 +35,12 @@ public class smsActivity extends AppCompatActivity {
 
     // Création des variables
     private String numero;
-     Task<Location> task;
+    Task<Location> task;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms);
-
-
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.google_map);
         mapFragment.getMapAsync(new OnMapReadyCallback() {

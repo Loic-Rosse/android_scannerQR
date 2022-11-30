@@ -45,7 +45,6 @@ public class messageFragment extends Fragment {
     private String numero;
     private String url = "https://www.google.com/maps/search/?api=1&query=" + latitude + "," + longitude;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
